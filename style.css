@@ -1,11 +1,10 @@
-/* Basic Setup & Variables */
 :root {
-    --color-background: #fdfdfd;
-    --color-text: #333333;
-    --color-primary: #8a795d; /* A muted, elegant gold/tan */
-    --color-headings: #2c2c2c;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Cormorant Garamond', serif;
+    --color-text: #555555;
+    --color-headings: #222222;
+    --color-background: #ffffff;
+    --color-border: #eeeeee;
 }
 
 * {
@@ -15,141 +14,207 @@
 }
 
 body {
-    font-family: var(--font-body);
-    line-height: 1.7;
-    background-color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.8;
     color: var(--color-text);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Container for Centered Content */
-.container {
-    max-width: 800px;
+.main-container {
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
+    padding: 40px 20px;
 }
 
-/* Hero Section */
-.hero {
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    color: var(--color-headings);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 4rem;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    max-width: 650px; /* For readability */
+}
+
+/* --- REWORKED HERO SECTION --- */
+.hero-section {
     position: relative;
-    height: 100vh;
+    width: 100%;
+    height: 85vh;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    background-image: url('hero-background.jpg');
-    background-size: cover;
-    background-position: center;
+    margin-bottom: 5rem;
 }
 
-.hero::before {
-    content: '';
+.hero-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
-}
-
-.hero-content {
-    position: relative; /* To be on top of the overlay */
+    object-fit: cover;
     z-index: 1;
-    animation: fadeIn 2s ease-in-out;
 }
 
-.hero h1 {
-    font-family: var(--font-heading);
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    font-weight: 300;
+.hero-text {
+    position: relative;
+    z-index: 3;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    padding-top: 40vh; /* <-- THIS IS THE NEW LINE TO PUSH THE TEXT DOWN */
+}
+
+.hero-text h1 {
+    color: white; 
+}
+
+.hero-text .subtitle {
+    font-family: var(--font-primary);
     letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
 }
 
-.hero h2 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 400;
-    margin-top: 1.5rem;
-    background-color: var(--color-primary);
-    padding: 5px 15px;
-    display: inline-block;
+.hero-text .date {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
 }
+/* --- END OF HERO SECTION REWORK --- */
+
 
 /* Content Sections */
 .content-section {
-    padding: 60px 0;
-    animation: fadeIn 2s;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.content-section h2 {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.content-section:last-of-type {
+    border-bottom: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Info Grid (for Wedding Day) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.info-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 3rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Links & Buttons */
+.text-link {
     color: var(--color-headings);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-headings);
+    padding-bottom: 2px;
 }
 
-/* Wedding Details Layout */
-.details-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.detail-item {
-    flex-basis: 45%;
-}
-
-.detail-item h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-/* Button Styling */
 .btn {
     display: inline-block;
-    padding: 12px 25px;
-    margin-top: 20px;
-    background-color: var(--color-primary);
-    color: white;
+    padding: 15px 35px;
+    margin-top: 2rem;
+    background-color: var(--color-headings);
+    color: var(--color-background);
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 400;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #71624b;
-    transform: translateY(-2px);
+    background-color: var(--color-text);
 }
+
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 30px;
-    background-color: #f4f4f4;
-    font-size: 0.9rem;
-    color: #555;
+    padding: 2rem 0;
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Responsive Design for Mobile */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 3rem; }
-    .hero h2 { font-size: 1.5rem; }
-    .details-grid { flex-direction: column; align-items: center; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 }
