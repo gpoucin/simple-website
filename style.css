@@ -1,21 +1,155 @@
+/* Basic Setup & Variables */
+:root {
+    --color-background: #fdfdfd;
+    --color-text: #333333;
+    --color-primary: #8a795d; /* A muted, elegant gold/tan */
+    --color-headings: #2c2c2c;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: var(--font-body);
+    line-height: 1.7;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* Container for Centered Content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
     text-align: center;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: white;
+    background-image: url('hero-background.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-h1 {
-    color: #333;
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+}
+
+.hero-content {
+    position: relative; /* To be on top of the overlay */
+    z-index: 1;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.hero h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 1.5rem;
+    background-color: var(--color-primary);
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+/* Content Sections */
+.content-section {
+    padding: 60px 0;
+    animation: fadeIn 2s;
+}
+
+.content-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-headings);
+}
+
+/* Wedding Details Layout */
+.details-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.detail-item {
+    flex-basis: 45%;
+}
+
+.detail-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 400;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #71624b;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #f4f4f4;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .details-grid { flex-direction: column; align-items: center; }
 }
