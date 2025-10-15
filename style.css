@@ -1,16 +1,21 @@
 :root {
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Cormorant Garamond', serif;
-    --color-text: #555555;
-    --color-headings: #222222;
+    --font-script: "Brush Script MT", cursive;
+    --color-text: #4F4F4F; /* Soft dark gray for readability */
+    --color-headings: #5A6851; /* Darker, rich sage green */
     --color-background: #ffffff;
-    --color-border: #eeeeee;
+    --color-border: #EAEAEA; /* Lighter gray border */
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -22,10 +27,53 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* --- NAVIGATION --- */
+.main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem 0;
+    z-index: 10;
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 4.5rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.main-nav a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- END NAVIGATION --- */
+
+
 .main-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0 20px; /* Removed top padding as hero is now outside */
 }
 
 /* Typography */
@@ -36,7 +84,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 5.5rem;
     letter-spacing: 1px;
 }
 
@@ -70,7 +118,7 @@ p {
     align-items: center;
     text-align: center;
     color: white;
-    margin-bottom: 5rem;
+    /* margin-bottom is no longer needed here */
 }
 
 .hero-background-image {
@@ -96,8 +144,8 @@ p {
 .hero-text {
     position: relative;
     z-index: 3;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    padding-top: 40vh; /* <-- THIS IS THE NEW LINE TO PUSH THE TEXT DOWN */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+    /* padding-top: 40vh;  <-- This can be removed or adjusted if needed */
 }
 
 .hero-text h1 {
@@ -106,31 +154,65 @@ p {
 
 .hero-text .subtitle {
     font-family: var(--font-primary);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
 .hero-text .date {
-    font-family: var(--font-primary);
-    font-weight: 500;
+    font-family: var(--font-secondary);
+    font-style: italic;
+    font-weight: 400;
     letter-spacing: 2px;
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     margin-top: 1rem;
+    text-transform: none;
 }
 /* --- END OF HERO SECTION REWORK --- */
 
 
 /* Content Sections */
 .content-section {
-    padding: 4rem 0;
+    padding: 5rem 0;
     border-bottom: 1px solid var(--color-border);
 }
 
 .content-section:last-of-type {
     border-bottom: none;
 }
+
+/* Our Story Section Layout */
+.story-container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    gap: 4rem;
+    max-width: 1200px; /* Allow it to be a bit wider */
+    margin-left: -10vw; /* Pull the container to the left */
+}
+
+.story-image {
+    flex: 0 0 35%; /* Make the image smaller */
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.story-text {
+    flex: 1;
+}
+.story-text p {
+    max-width: 500px; /* Adjust paragraph width for this section */
+}
+
+.story-text h2 {
+    margin-bottom: 1rem; /* Adjust space between title and paragraph */
+}
+
+/* --- End Story Section --- */
 
 .text-center {
     text-align: center;
@@ -141,13 +223,36 @@ p {
     margin-right: auto;
 }
 
+/* Custom Section Backgrounds */
+.sage-bg {
+    background-color: var(--color-headings);
+    color: var(--color-background);
+    padding: 5rem 0;
+}
+
+.sage-bg h2,
+.sage-bg h3 {
+    color: var(--color-background);
+}
+
+.sage-bg .text-link {
+    color: var(--color-background);
+    border-bottom-color: var(--color-background);
+}
+
 /* Info Grid (for Wedding Day) */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 4rem;
     text-align: center;
     margin-top: 4rem;
+}
+
+.info-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
 }
 
 .info-item p {
@@ -193,7 +298,83 @@ p {
 }
 
 .btn:hover {
-    background-color: var(--color-text);
+    background-color: #495442; /* An even darker sage for hover */
+}
+
+/* FAQ Section */
+.faq-container {
+    max-width: 700px;
+    margin: 3rem auto 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.faq-question {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--color-headings);
+    text-align: left;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+/* Countdown Timer */
+.countdown-section {
+   padding-bottom: 2rem;
+}
+
+.countdown-container {
+   display: flex;
+   justify-content: center;
+   gap: 2rem;
+   margin-top: 3rem;
+}
+
+.countdown-item {
+   text-align: center;
+}
+
+.countdown-number {
+   display: block;
+   font-family: var(--font-secondary);
+   font-size: 3.5rem;
+   font-weight: 400;
+   color: var(--color-headings);
+   line-height: 1;
+}
+
+.countdown-label {
+   display: block;
+   font-size: 0.8rem;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   margin-top: 0.5rem;
 }
 
 
@@ -207,14 +388,44 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
+    h1 { font-size: 4rem; }
     h2 { font-size: 2rem; }
     
+    .story-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .story-container {
+        margin-left: 0; /* Reset margin for mobile */
+    }
+
+    .story-text h2 {
+        text-align: center;
+    }
+
     .info-grid {
         grid-template-columns: 1fr;
     }
 
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+
+    .main-nav ul {
+        gap: 1rem;
+        justify-content: space-around;
+    }
+    .main-nav a {
+        font-size: 0.7rem;
+    }
+
+    .countdown-container {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
     }
 }
