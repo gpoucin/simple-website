@@ -33,7 +33,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 3rem 0;
+    padding: 1.5rem 0; /* Reduced top/bottom padding to move nav higher */
     z-index: 10;
     background-color: transparent;
     border-bottom: none;
@@ -48,8 +48,9 @@ body {
 .main-nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 4.5rem;
+    justify-content: space-between;
+    align-items: center; /* Vertically align all nav items */
+    gap: 3rem; /* Adjusted gap to accommodate the new item */
 }
 
 .main-nav a {
@@ -67,13 +68,22 @@ body {
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Styling for the new E&G logo link in the navigation */
+.main-nav .nav-logo-link {
+    font-family: var(--font-secondary); /* Use the secondary font */
+    font-size: 2.6rem; /* Make it larger than other nav items */
+    font-weight: 400; /* Adjust weight for better appearance with secondary font */
+    text-transform: none; /* Override uppercase */
+    letter-spacing: normal; /* Override letter-spacing */
+}
+
 /* --- END NAVIGATION --- */
 
 
 .main-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px; /* Removed top padding as hero is now outside */
+    padding: 0 15px; /* Slightly reduced horizontal padding for smaller screens */
 }
 
 /* Typography */
@@ -89,7 +99,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Slightly smaller h2 for better mobile fit */
     margin-bottom: 2rem;
 }
 
@@ -100,12 +110,21 @@ h3 {
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-}
+} 
 
 p {
     margin-bottom: 1rem;
     max-width: 650px; /* For readability */
 }
+
+.info-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 650px;
+    margin: 1rem auto;
+    text-align: left;
+}
+
 
 /* --- REWORKED HERO SECTION --- */
 .hero-section {
@@ -169,12 +188,32 @@ p {
     margin-top: 1rem;
     text-transform: none;
 }
+
+/* Short hero for subpages */
+/* Short hero for subpages */
+.hero-short {
+    height: 40vh; /* Half the height of the main hero */
+    min-height: 300px;
+}
+
+.hero-short .hero-text h1 {
+    font-size: 4rem; /* Slightly smaller H1 for subpages */
+}
+
+.hero-short .hero-text {
+    margin-top: 8vh; /* Pushed the title a bit lower */
+}
+
+@media (max-width: 768px) {
+    .hero-short { min-height: 250px; }
+    .hero-short .hero-text h1 { font-size: 3rem; }
+}
 /* --- END OF HERO SECTION REWORK --- */
 
 
 /* Content Sections */
 .content-section {
-    padding: 5rem 0;
+    padding: 4rem 0; /* Slightly reduced vertical padding for sections */
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -203,12 +242,21 @@ p {
 
 .story-text {
     flex: 1;
+    text-align: center; /* Center all content within this container */
 }
 .story-text p {
-    max-width: 500px; /* Adjust paragraph width for this section */
+    max-width: 600px; /* Adjusted for better flow on larger screens */
+    margin-left: auto; /* Center paragraphs within story-text */
+    margin-right: auto;
 }
 
 .story-text h2 {
+    text-align: center; /* Center h2 in story-text by default */
+    margin-bottom: 1rem; /* Adjust space between title and paragraph */
+}
+
+/* Specific adjustment for the first story-text h2 if it's not centered by default */
+.story-container .story-text h2 {
     margin-bottom: 1rem; /* Adjust space between title and paragraph */
 }
 
@@ -238,6 +286,19 @@ p {
 .sage-bg .text-link {
     color: var(--color-background);
     border-bottom-color: var(--color-background);
+}
+
+/* Special style for buttons on the sage background */
+.sage-bg .btn {
+    background-color: transparent;
+    border: 2px solid var(--color-background);
+    color: var(--color-background);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sage-bg .btn:hover {
+    background-color: var(--color-background);
+    color: var(--color-headings);
 }
 
 /* Info Grid (for Wedding Day) */
@@ -293,7 +354,7 @@ p {
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Slightly smaller button text */
     transition: background-color 0.3s ease;
 }
 
@@ -388,8 +449,12 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    h1 { font-size: 4rem; }
-    h2 { font-size: 2rem; }
+
+    .main-container { padding: 0 15px; } /* Ensure consistent padding */
+    .content-section { padding: 3rem 0; } /* Further reduce section padding on mobile */
+
+    h1 { font-size: 3.5rem; } /* Smaller H1 for mobile */
+    h2 { font-size: 1.8rem; } /* Smaller H2 for mobile */
     
     .story-container {
         flex-direction: column;
@@ -400,7 +465,18 @@ footer {
         margin-left: 0; /* Reset margin for mobile */
     }
 
+    .story-image {
+        flex: 0 0 auto; /* Allow image to take natural width */
+        width: 100%; /* Ensure image takes full width */
+    }
+
     .story-text h2 {
+        text-align: center;
+    }
+
+    .story-text p {
+        max-width: 100%; /* Allow paragraphs to take full width */
+        margin-left: 0;
         text-align: center;
     }
 
@@ -415,6 +491,16 @@ footer {
     .main-nav ul {
         gap: 1rem;
         justify-content: space-around;
+        flex-wrap: wrap; /* Allow nav items to wrap if needed */
+        padding: 0 10px; /* Add some horizontal padding to nav ul */
+    }
+
+    /* Adjust logo link size for smaller screens */
+    .main-nav .nav-logo-link {
+        flex-basis: 100%; /* Force logo to its own line if wrapping */
+        text-align: center;
+        margin-bottom: 0.5rem; /* Space below logo when wrapped */
+        font-size: 1.95rem;
     }
     .main-nav a {
         font-size: 0.7rem;
@@ -428,4 +514,10 @@ footer {
     .countdown-number {
         font-size: 2.5rem;
     }
+
+    .btn {
+        padding: 12px 25px; /* Smaller padding for buttons on mobile */
+        font-size: 0.8rem;
+    }
+
 }
