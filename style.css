@@ -130,7 +130,7 @@ p {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 85vh;
+    height: 63.75vh; /* Reduced by 25% from 85vh */
     min-height: 500px;
     display: flex;
     justify-content: center;
