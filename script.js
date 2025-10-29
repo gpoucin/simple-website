@@ -44,3 +44,14 @@ faqItems.forEach(item => {
         answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
     });
 });
+
+// Mobile Navigation Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navList = document.querySelector('.main-nav ul');
+
+if (navToggle && navList) {
+    navToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        navToggle.innerHTML = navList.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+}
