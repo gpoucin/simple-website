@@ -45,13 +45,24 @@ faqItems.forEach(item => {
     });
 });
 
-// Mobile Navigation Toggle
+// --- MOBILE NAVIGATION SIDE PANEL ---
 const navToggle = document.querySelector('.nav-toggle');
 const navList = document.querySelector('.main-nav ul');
+const pageOverlay = document.querySelector('.page-overlay');
 
-if (navToggle && navList) {
-    navToggle.addEventListener('click', () => {
+if (navToggle && navList && pageOverlay) {
+    navToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
         navList.classList.toggle('active');
+        pageOverlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
         navToggle.innerHTML = navList.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    pageOverlay.addEventListener('click', () => {
+        navList.classList.remove('active');
+        pageOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
     });
 }
